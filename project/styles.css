@@ -1,0 +1,327 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    /* システム系のフォントを設定してるけど、別に好きなフォントに変えてもOK */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #333;
+    background-color: #f7f7f7;
+    line-height: 1.6;
+  }
+  
+  /* リンクの下線を取って、文字色は継承 */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* 各セクション全体に余白 */
+  section {
+    padding: 60px 20px;
+    /* ここで背景色を変えたりしてもいいかも */
+  }
+  
+  /* 大きめの見出しを真ん中寄せ */
+  h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  /* 
+    -----------------------------
+     ヘッダーのスタイル
+    -----------------------------
+  */
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    padding: 15px 20px;
+    position: sticky; /* スクロールしても上にくっついてくる */
+    top: 0;
+    z-index: 999;
+  }
+  
+  .header-logo a {
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .header-nav ul {
+    display: flex;
+    gap: 20px; /* メニューアイテムの間を空ける */
+  }
+  
+  .header-nav ul li a {
+    color: #fff; /* メニューの文字色を白に */
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .header-nav ul li a:hover {
+    color: #ff8c00; /* ホバーしたらオレンジ色になる */
+  }
+  
+  /* 
+    -----------------------------
+     Heroセクション（大きい画像とか）
+    -----------------------------
+  */
+  .hero {
+    /* URLに好きな背景画像を設定できる。今回はダミー画像を使ってる */
+    background: url("https://via.placeholder.com/1920x1080") no-repeat center/cover;
+    height: 100vh; /* 全画面の高さ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+  }
+  
+  /* 画面全体に黒っぽいフィルターをかけるやつ */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* top:0; right:0; bottom:0; left:0; と同じ */
+    background: rgba(0, 0, 0, 0.4); /* ちょい暗めのオーバーレイ */
+  }
+  
+  .hero-content {
+    position: relative; /* オーバーレイの上に表示するために相対配置 */
+    z-index: 1; /* オーバーレイの上に表示されるように1を指定 */
+  }
+  
+  .hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+  
+  /* ヒーローのボタンぽいやつ */
+  .btn-hero {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff8c00;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  .btn-hero:hover {
+    background-color: #e57800;
+  }
+  
+  /* 
+    -----------------------------
+     Servicesセクション
+    -----------------------------
+  */
+  .services {
+    background: #fff; /* 真っ白にしてみた */
+  }
+  
+  /* Gridでカードを並べる */
+  .services-grid {
+    max-width: 1200px; /* 中央に幅制限する */
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px; /* カードの隙間 */
+  }
+  
+  .service-card {
+    background: #fafafa;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .service-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.4em;
+  }
+  
+  /* 
+    -----------------------------
+     Galleryセクション
+    -----------------------------
+  */
+  .gallery {
+    background: #fff;
+  }
+  
+  /* ギャラリーもGrid */
+  .gallery-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  /* カード風にしてホバーで拡大 */
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-item img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  
+  /* オーバーレイが隠れてる状態 */
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* ホバーするとオーバーレイが見えるようになる */
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+  
+  /* ホバーでちょっと拡大 */
+  .gallery-item:hover {
+    transform: scale(1.02);
+  }
+  
+  /* 
+    -----------------------------
+     お問い合わせフォーム
+    -----------------------------
+  */
+  .contact {
+    background: #fafafa;
+  }
+  
+  /* フォーム全体のラッパ */
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: inline-block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+  }
+  
+  .btn-submit {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #ff8c00;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-submit:hover {
+    background-color: #e57800;
+  }
+  
+  /* 
+    -----------------------------
+     フッター
+    -----------------------------
+  */
+  .site-footer {
+    text-align: center;
+    background-color: #222;
+    color: #aaa;
+    padding: 20px;
+  }
+  
+  /* 
+    -----------------------------
+     メディアクエリ（スマホ対応）
+     画面幅が狭いとき用の設定
+    -----------------------------
+  */
+  @media (max-width: 768px) {
+    /* ヘッダーを縦並びに */
+    .site-header {
+      flex-wrap: wrap;
+    }
+  
+    /* Gapをちょっと小さく */
+    .header-nav ul {
+      gap: 10px;
+    }
+  
+    /* ヒーローのタイトルを小さくする */
+    .hero-content h1 {
+      font-size: 2em;
+    }
+  
+    /* ServicesやGalleryを1カラムにしちゃう */
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    /* フォームを少し狭める */
+    .contact-form {
+      width: 90%;
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* ボタンを全部幅100%にして真ん中に置く */
+    .btn-hero,
+    .btn-submit {
+      width: 100%;
+      text-align: center;
+    }
+  }

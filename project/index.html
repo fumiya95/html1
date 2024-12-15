@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  
+  <meta name="description" content="初心者っぽいけどそこそこ凝ったHP">
+  <!-- スマホとかでちゃんと表示されるための指定 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初心者っぽいHTMLとCSSのサンプル</title>
+  <!-- 別ファイルのCSSを読み込み -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ヘッダー。上のナビゲーションとか入れるところです。 -->
+  <header class="site-header">
+    <!-- ロゴっぽい文字を置いてるところ -->
+    <div class="header-logo">
+      <a href="#">MyWebsite</a>
+    </div>
+
+    <!-- ここが上のメニューです -->
+    <nav class="header-nav">
+      <ul>
+        <!-- クリックするとそれぞれのセクションへジャンプするリンク -->
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ここが一番目立つ見出しの部分。画面いっぱいの画像とか。 -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>いらっしゃいませ！</h1>
+      <p>このページは初心者っぽいけどがんばったレイアウトサンプルです！</p>
+      <!-- ボタンっぽいリンク。services までスクロールします。 -->
+      <a href="#services" class="btn-hero">サービスを見る</a>
+    </div>
+  </section>
+
+  <!-- Servicesのところ。サービス紹介みたいなカードを並べてます。 -->
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <!-- 1つめのカード。 -->
+      <div class="service-card">
+        <h3>Web Design</h3>
+        <p>かっこいいデザインを作ります！</p>
+      </div>
+      <!-- 2つめのカード。 -->
+      <div class="service-card">
+        <h3>SEO Consulting</h3>
+        <p>サイトの検索順位を上げるコツを教えます。</p>
+      </div>
+      <!-- 3つめのカード。 -->
+      <div class="service-card">
+        <h3>Branding</h3>
+        <p>ロゴとか作ってブランド力アップのお手伝い。</p>
+      </div>
+      <!-- 4つめのカード。 -->
+      <div class="service-card">
+        <h3>Marketing</h3>
+        <p>SNSとかで拡散してもらう方法いろいろ考えます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ギャラリー的なやつ。写真を並べてホバーすると文字が出る仕組み。 -->
+  <section class="gallery" id="gallery">
+    <h2>Gallery</h2>
+    <p>写真とか作品紹介の例。ホバーでオーバーレイがふわっと出てきます。</p>
+    <div class="gallery-grid">
+      <!-- 画像1 -->
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/400x300" alt="サンプル画像1">
+        <div class="gallery-overlay">
+          <p>Project 1</p>
+        </div>
+      </div>
+      <!-- 画像2 -->
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/400x300" alt="サンプル画像2">
+        <div class="gallery-overlay">
+          <p>Project 2</p>
+        </div>
+      </div>
+      <!-- 画像3 -->
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/400x300" alt="サンプル画像3">
+        <div class="gallery-overlay">
+          <p>Project 3</p>
+        </div>
+      </div>
+      <!-- 画像4 -->
+      <div class="gallery-item">
+        <img src="https://via.placeholder.com/400x300" alt="サンプル画像4">
+        <div class="gallery-overlay">
+          <p>Project 4</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせフォームを置いてみました。 -->
+  <section class="contact" id="contact">
+    <h2>お問い合わせ</h2>
+    <form class="contact-form">
+      <div class="form-group">
+        <label for="name">お名前</label>
+        <input type="text" id="name" placeholder="山田太郎" required>
+      </div>
+      <div class="form-group">
+        <label for="email">メールアドレス</label>
+        <input type="email" id="email" placeholder="example@gmail.com" required>
+      </div>
+      <div class="form-group">
+        <label for="message">お問い合わせ内容</label>
+        <textarea id="message" rows="5" placeholder="ここに入力してください" required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">送信</button>
+    </form>
+  </section>
+
+  <!-- フッターです。コピーライトとか。 -->
+  <footer class="site-footer">
+    <p>&copy; 2024 MyWebsite. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
